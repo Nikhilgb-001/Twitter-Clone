@@ -12,6 +12,7 @@ import notificationRoutes from "./routes/notification.route.js";
 import { connectDB } from "./db/connection.js";
 
 dotenv.config();
+
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
   api_key: process.env.CLOUDINARY_API_KEY,
@@ -22,7 +23,7 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 //middleware for parsing req.body the form data coming from the react application
-app.use(express.json());
+app.use(express.json({ limit: "5mb" })); // to parse req.body the size should not be more then 10mb in order to avoid denial of service attacks
 
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
