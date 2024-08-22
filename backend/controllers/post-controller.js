@@ -78,7 +78,10 @@ export const commentOnPost = async (req, res) => {
       return res.status(404).json({ message: "Post not found" });
     }
 
-    const comment = { user: userId, text };
+    const updatedComment = post.comments.filter(
+      (id) => id.toString() !== userId.toString()
+    );
+    const comment = { user: userId, text, updatedComment };
 
     post.comments.push(comment);
     await post.save();
