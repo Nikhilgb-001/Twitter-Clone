@@ -1,4 +1,4 @@
-# MERN Stack Project: Build and Deploy a Twitter Clone 
+# MERN Stack Project:  Twitter Clone 
 
 This is a Twitter Clone built with React.js, MongoDB, Node.js, Express, Tailwind, and Socket.io. It allows users to create posts, comment on posts, like posts, and follow other users. It also includes authentication with JSONWEBTOKENS (JWT) and image uploads using Cloudinary.
 
@@ -17,8 +17,6 @@ Some Features:
 -   🖼️ Edit Cover Image and Profile Image
 -   📷 Image Uploads using Cloudinary
 -   🔔 Send Notifications
--   🌐 Deployment
--   ⏳ And much more!
 
 ### Setup .env file
 
