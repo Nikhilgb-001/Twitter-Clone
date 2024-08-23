@@ -10,7 +10,6 @@ import toast from "react-hot-toast";
 
 const Sidebar = () => {
   const queryClient = useQueryClient();
-
   const { mutate: logout } = useMutation({
     mutationFn: async () => {
       try {
@@ -18,23 +17,21 @@ const Sidebar = () => {
           method: "POST",
         });
         const data = await res.json();
+
         if (!res.ok) {
           throw new Error(data.error || "Something went wrong");
         }
       } catch (error) {
-        throw new Error(Error);
+        throw new Error(error);
       }
     },
-
     onSuccess: () => {
-      toast.success("logout successful");
       queryClient.invalidateQueries({ queryKey: ["authUser"] });
     },
     onError: () => {
-      toast.error("logout failed");
+      toast.error("Logout failed");
     },
   });
-
   const { data: authUser } = useQuery({ queryKey: ["authUser"] });
 
   return (
@@ -91,11 +88,11 @@ const Sidebar = () => {
                 <p className="text-slate-500 text-sm">@{authUser?.username}</p>
               </div>
               <BiLogOut
+                className="w-5 h-5 cursor-pointer"
                 onClick={(e) => {
                   e.preventDefault();
                   logout();
                 }}
-                className="w-5 h-5 cursor-pointer"
               />
             </div>
           </Link>
